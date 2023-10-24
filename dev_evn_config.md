@@ -10,3 +10,12 @@ conda install cudatoolkit=10.1 cudnn=7.6.3 -c https://mirrors.tuna.tsinghua.edu.
 `
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
 `
+3.flash-attention安装方法
+
+```shell
+git clone https://github.com/Dao-AILab/flash-attention
+cd flash-attention && pip install .
+# 下方安装可选，安装可能比较缓慢。
+# pip install csrc/layer_norm
+# pip install csrc/rotary
+```

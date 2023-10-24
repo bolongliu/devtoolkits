@@ -9,15 +9,15 @@
 conda install -c nvidia cuda -y
 conda install -c nvidia cuda-compiler -y
 
- which nvcc
+which nvcc
 # /home/liubl/miniconda3/envs/env_name/bin/nvcc
 export CUDA_HOME=/home/liubl/miniconda3/envs/env_name/bin/nvcc
 ```
 - 使用apt直接安装nvidia-cuda-toolkit,因为conda安装的nvidia-cuda-toolkit不是完全的版本。
 pytorch安装的cuda toolkit是不带nvcc编译器的
 ```shell
- sudo apt install nvidia-cuda-toolkit -y
- which nvcc
+sudo apt install nvidia-cuda-toolkit -y
+which nvcc
 export CUDA_HOME=/usr/local/cuda
 ```
 注：

@@ -6,7 +6,8 @@
 - 使用conda环境解决方法
 
 ```shell
-conda install -c nvidia cuda
+conda install -c nvidia cuda -y
+conda install -c nvidia cuda-compiler -y
 
  which nvcc
 # /home/liubl/miniconda3/envs/env_name/bin/nvcc

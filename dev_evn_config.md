@@ -19,3 +19,9 @@ cd flash-attention && pip install .
 # pip install csrc/layer_norm
 # pip install csrc/rotary
 ```
+注意这里会从出现错误提示flash-attention/csrc/cutlass找不到，git下载cutlass失败
+所以cd flash-attention/csrc/ 然后 
+```shell
+git clone git@github.com:NVIDIA/cutlass.git
+```
+重新运行python setup.py install 就可以编译成功了

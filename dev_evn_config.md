@@ -25,3 +25,21 @@ cd flash-attention && pip install .
 git clone git@github.com:NVIDIA/cutlass.git
 ```
 重新运行python setup.py install 就可以编译成功了
+
+若还是报如下错误
+```shell
+running bdist_wheel
+Guessing wheel URL:  https://github.com/Dao-AILab/flash-attention/releases/download/v2.3.3/flash_attn-2.3.3+cu117torch2.0cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+error: Remote end closed connection without response
+[end of output]
+
+```
+采用如下解决方法：
+```shell
+wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.3.3/flash_attn-2.3.3+cu117torch2.0cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+pip install flash_attn-2.3.3+cu117torch2.0cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+
+# 此时终端应该会显示
+Installing collected packages: ninja, flash-attn
+Successfully installed flash-attn-2.3.3 ninja-1.11.1.1
+```

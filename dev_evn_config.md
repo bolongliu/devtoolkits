@@ -2,6 +2,8 @@
 
 ## 0. conda镜像,pypi镜像配置
 ### conda
+
+**HIT镜像**
 ```shell
 vim .condarc
 # 写入如下内容：
@@ -22,6 +24,16 @@ custom_channels:
   pytorch: https://mirrors.hit.edu.cn/anaconda/cloud
   pytorch-lts: https://mirrors.hit.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.hit.edu.cn/anaconda/cloud
+```
+
+**USTC镜像**
+
+```shell
+channels:
+  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+ssl_verify: true
 ```
 
 ### pypi

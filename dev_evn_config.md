@@ -1,5 +1,58 @@
 # 环境配置加速方法
 
+## 0. conda镜像,pypi镜像配置
+### conda
+```shell
+vim .condarc
+# 写入如下内容：
+
+channels:
+  - defaults
+  - conda-forge
+show_channel_urls: true
+default_channels:
+  - https://mirrors.hit.edu.cn/anaconda/pkgs/main
+  - https://mirrors.hit.edu.cn/anaconda/pkgs/r
+  - https://mirrors.hit.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.hit.edu.cn/anaconda/cloud
+  msys2: https://mirrors.hit.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.hit.edu.cn/anaconda/cloud
+  menpo: https://mirrors.hit.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.hit.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.hit.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.hit.edu.cn/anaconda/cloud
+```
+
+### pypi
+```shell
+python -m pip install --upgrade pip
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+```shell
+vim .config/pip/pip.conf 或者vim .pip/pip.conf
+# 写入如下内容：
+
+[global]
+index-url = https://mirrors.hit.edu.cn/pypi/web/simple
+# index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+# index-url = https://pypi.mirrors.ustc.edu.cn/simple
+# index-url = https://pypi.douban.com/simple
+
+```
+**配置多个镜像源平衡负载**
+
+可在已经替换 index-url 的情况下通过以下方式继续增加源站：
+```shell
+pip config set global.extra-index-url "<url1> <url2>..."
+```
+**例子**
+```shell
+pip config set global.extra-index-url "https://mirrors.hit.edu.cn/pypi/web/simple https://pypi.mirrors.ustc.edu.cn/simple  https://pypi.tuna.tsinghua.edu.cn/simple"
+```
+可用的 pypi 源列表（校园网联合镜像站）：https://mirrors.cernet.edu.cn/list/pypi
+
 ## 1. 指定conda源进行安装cudatoolkit和cudnn及相关库
 
 `

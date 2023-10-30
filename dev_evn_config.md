@@ -65,6 +65,11 @@ pip config set global.extra-index-url "https://mirrors.hit.edu.cn/pypi/web/simpl
 ```
 可用的 pypi 源列表（校园网联合镜像站）：https://mirrors.cernet.edu.cn/list/pypi
 
+**换回默认源**
+```shell
+pip config unset global.index-url
+```
+
 ## 1. 指定conda源进行安装cudatoolkit和cudnn及相关库
 
 `

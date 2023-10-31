@@ -9,9 +9,11 @@
 ## 二、常见问题解决方法
 ### 1. ubuntu 搜狗输入法重启方法
 1. 查看fcitx的pid
-`pidof fcitx
+```shell
+pidof fcitx
 kill PID #该PID指的是查找的PID
-`
+```
+
 2. 重启fcitx
 `fcitx
 `

@@ -1,6 +1,6 @@
 # 环境配置加速方法
 
-## 0. conda镜像,pypi镜像配置
+## 0. conda镜像,pypi镜像,Docker镜像配置
 ### conda
 
 **HIT镜像**
@@ -69,6 +69,30 @@ pip config set global.extra-index-url "https://mirrors.hit.edu.cn/pypi/web/simpl
 ```shell
 pip config unset global.index-url
 ```
+
+### docker
+```shell
+# 修改 /etc/docker/daemon.json 文件，执行命令：
+vim /etc/docker/daemon.json
+# 修改为如下形式：
+{
+ "registry-mirrors": ["https://registry.docker-cn.com"]
+}
+
+# 多个软件源使用
+{
+ "registry-mirrors": ["http://hub-mirror.c.163.com",
+                      "https://registry.docker-cn.com",
+                      "https://docker.mirrors.ustc.edu.cn",
+                      "https://kfwkfulq.mirror.aliyuncs.com"
+                      ]
+}
+
+# 重启Docker,以使docker的配置文件生效
+service docker restart
+```
+**配置Docker加速器完成。**
+
 
 ## 1. 指定conda源进行安装cudatoolkit和cudnn及相关库
 

@@ -76,7 +76,7 @@ pip config unset global.index-url
 vim /etc/docker/daemon.json
 # 修改为如下形式：
 {
- "registry-mirrors": ["https://registry.docker-cn.com"]
+ "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
 }
 
 # 多个软件源使用
@@ -89,7 +89,15 @@ vim /etc/docker/daemon.json
 }
 
 # 重启Docker,以使docker的配置文件生效
-service docker restart
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+docker info
+# 显示如下表示配置成功
+ Insecure Registries:
+  127.0.0.0/8
+ Registry Mirrors:
+  https://ustc-edu-cn.mirror.aliyuncs.com/
+ Live Restore Enabled: false
 ```
 **配置Docker加速器完成。**
 

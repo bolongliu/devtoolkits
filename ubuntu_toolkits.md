@@ -2,6 +2,7 @@
 
 ## 一、ubuntu常用软件列表
 1. 中文输入法：搜狗输入法,[配置方法](https://shurufa.sogou.com/linux/guide)
+2. 相册自托管：[immich](https://github.com/immich-app/immich)Immich 是一个直接从 iPhone、Android 手机上备份照片与视频的开源解决方案，通过部署在自己的电脑、NAS、服务器中，使用 App 进行备份。界面酷似 Google Photos，支持多用户、照片和相册分享、好友上传、地理位置、机器学习识别事件等功能。是居家备份照片的好帮手。
 
 
 

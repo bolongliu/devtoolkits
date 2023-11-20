@@ -9,6 +9,16 @@ git init
 git add .
 git commit -m "first commit"
 git push -u origin master
+
+# 打tag后推送
+git tag v1.0.1
+git commit -m "add tag v1.5.2"
+
+# push单个tag，命令格式为：git push origin [tagname]
+git push origin v1.0 #将本地v1.0的tag推送到远端服务器
+# push所有tag，命令格式为：git push [origin] --tags
+git push --tags
+git push origin --tags
 ```
 
 ### 1.2 git base

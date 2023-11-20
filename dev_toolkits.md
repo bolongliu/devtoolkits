@@ -87,5 +87,3 @@ git add .
 git commit -m "Use git lfs for large file size of 100MB"
 git push origin master
 ```
-
-```

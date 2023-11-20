@@ -1,5 +1,5 @@
 # dev toolkits
-## 1. git
+## 1. git workflow
 
 ### create a new repository on the command line
 ```shell
@@ -17,4 +17,23 @@ echo "# readme" >> README.md
 git remote add origin git@github.com:xxx/xxx.git
   git branch -M main
   git push -u origin main
+```
+
+### git lfs workflow
+Use git lfs for large file size of 100MB
+
+**install**
+```shell
+# apt/deb: 
+sudo apt-get install git-lfs
+# yum/rpm: 
+sudo yum install git-lfs
+```
+**workflow**
+```shell
+git lfs install
+git lfs track "*.psd"
+git add .
+git commit -m "Use git lfs for large file size of 100MB"
+git push origin main
 ```

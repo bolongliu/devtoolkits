@@ -1,7 +1,19 @@
 # dev toolkits
 ## 1. git workflow
 
-### create a new repository on the command line
+### 1.1 git and git lfs workflow
+```shell
+git lfs install
+git lfs track "*.psd"
+git init
+git add .
+git commit -m "first commit"
+git push -u origin master
+```
+
+### 1.2 git base
+
+**create a new repository on the command line**
 ```shell
 echo "# readme" >> README.md
   git init
@@ -12,14 +24,15 @@ echo "# readme" >> README.md
   git push -u origin main
 ```
 
-### push an existing repository from the command line
+**push an existing repository from the command line**
 ```shell
 git remote add origin git@github.com:xxx/xxx.git
   git branch -M main
-  git push -u origin main
+  git push -u origin master
 ```
 
-### git lfs workflow
+### 1.3 git lfs workflow
+
 Use git lfs for large file size of 100MB
 
 **install**
@@ -35,5 +48,7 @@ git lfs install
 git lfs track "*.psd"
 git add .
 git commit -m "Use git lfs for large file size of 100MB"
-git push origin main
+git push origin master
+```
+
 ```

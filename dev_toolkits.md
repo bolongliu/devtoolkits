@@ -42,19 +42,19 @@ git push origin --delete dev
 **1.2.1 create a new repository on the command line**
 ```shell
 echo "# readme" >> README.md
-  git init
-  git add README.md
-  git commit -m "first commit"
-  git branch -M main
-  git remote add origin git@github.com:xxx/xxx.git
-  git push -u origin main
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:xxx/xxx.git
+git push -u origin main
 ```
 
 **1.2.2 push an existing repository from the command line**
 ```shell
 git remote add origin git@github.com:xxx/xxx.git
-  git branch -M main
-  git push -u origin master
+git branch -M main
+git push -u origin master
 ```
 
 **1.2.3 git branch**

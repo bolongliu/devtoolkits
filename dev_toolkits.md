@@ -48,6 +48,11 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin git@github.com:xxx/xxx.git
 git push -u origin main
+
+# 查看提交记录
+git log
+# 找到提交前的commit,重置
+git reset xxxxx
 ```
 
 **1.2.2 push an existing repository from the command line**

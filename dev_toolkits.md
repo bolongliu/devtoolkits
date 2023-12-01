@@ -15,7 +15,7 @@ git push -u origin master
 git tag v1.0.1
 git commit -m "add tag v1.5.2"
 # push单个tag，命令格式为：git push origin [tagname]
-git push origin v1.0 #将本地v1.0的tag推送到远端服务器
+git push origin v1.0.1 #将本地v1.0的tag推送到远端服务器
 # push所有tag，命令格式为：git push [origin] --tags
 git push --tags
 git push origin --tags
@@ -34,6 +34,36 @@ git push origin dev:dev
 # 删除远程分支
 git push origin :dev #推送一个空分支到远程分支，其实就相当于删除远程分支
 git push origin --delete dev
+
+# 修改提交记录
+想要合并1-3条，有两个方法
+0. git log --oneline
+
+1.从HEAD版本开始往过去数3个版本
+git rebase -i HEAD~3
+
+2.指名要合并的版本之前的版本号
+git rebase -i 3a4226b
+请注意3a4226b这个版本是不参与合并的，可以把它当做一个坐标
+执行了rebase命令之后，会弹出一个窗口，头几行如下：
+pick 3ca6ec3   '注释**********'
+pick 1b40566   '注释*********'
+pick 53f244a   '注释**********'
+
+2.将pick改为squash或者s,之后保存并关闭文本编辑窗口即可。
+pick 3ca6ec3   '注释**********'
+s 1b40566   '注释*********'
+s 53f244a   '注释**********'
+
+3.然后保存退出，Git会压缩提交历史，如果有冲突，需要修改，修改的时候要注意，保留最新的历史，不然我们的修改就丢弃了。修改以后要记得敲下面的命令：
+git add .  
+git rebase --continue  
+
+4.如果你想放弃这次压缩的话，执行以下命令：
+git rebase --abort 
+
+一种极端情况是想从当前分支的第一个提交开始rebase，可以使用以下命令
+git rebase -i --root
 ```
 
 

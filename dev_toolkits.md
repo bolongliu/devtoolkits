@@ -103,6 +103,60 @@ Git鼓励大量使用分支：
 合并某分支到当前分支：git merge <name>
 删除分支：git branch -d <name>
 ```
+**常用操作**
+
+1. 彻底清除git所有历史提交记录使其为“新”库
+
+- 开发中未制定、遵循 git 管理项目标准，随意(不规范)的提交 严重“污染了”提交历史，使开发主线 “脏乱”;
+- 基于以前的仓库重新开发，这样可保留以前的配置等文件，但是需要删除全部的历史记录、tag、分支等;
+- 由于自己或其他方面特殊需求，需要保留仓库的部分属性(创建时间，说明，主页等)，但需要清除历史记录，使其为“新库”。
+基于以上3方面的需求，需要提供一个 在不删除原仓库的前提下，清除原仓库的所有历史提交记录(包含：分支、tag) 解决方案。
+
+```shell
+1.创建新分支
+git checkout --orphan latest_branch
+
+2.添加所有文件
+git add .
+# 或 git add -A
+
+3.commit代码
+git commit -m "init"
+
+4.删除原来的主分支(master)
+git branch -D master
+
+5.把当前分支重命名为master
+git branch -m master
+
+6.最后把代码推送到远程仓库
+注意： 有些仓库有 master 分支保护，不允许强制 push，需要在远程仓库项目里暂时把项目保护关掉才能推送。
+git push -f origin master
+
+7.从远程库拉取更新代码(测试)
+git pull
+如果别人pull不下来可以敲
+git pull -r
+
+8.确定清除历史记录的结果
+# 1.查看提交日志
+git log --pretty=oneline
+
+# 2.查看分支信息
+# 列出所有本地分支
+git branch
+# 列出所有远程分支
+git branch -r
+# 列出所有本地分支和远程分支
+git branch -a
+
+# 3.查看 tag 信息
+# 查看本地标签
+git tag
+# 查看远程标签
+git ls-remote --tags
+```
+
 ### 1.3 git lfs workflow
 
 Use git lfs for large file size of 100MB

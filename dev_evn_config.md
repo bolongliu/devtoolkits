@@ -101,12 +101,44 @@ docker info
 ```
 **配置Docker加速器完成。**
 
+## 1. 深度学习环境配置
+### 1. 若只使用Pytorch，则无需安装完整版本cudatoolkit cudnn，尤其是不需要进行相关【包编译安装】时选择该方法。
+`
+conda pytorch torchvision cudatoolkit=10.0 -c pytorch
+`
+### 2. 【需要编译】，通过conda安装的cudatoolkit cudnn是阉割版，因此需要编译的需要安装完整版本的cudatoolkit cudnn
+
+【官网下载，手动安装】
+https://developer.nvidia.com/cuda-toolkit-archive
+https://developer.nvidia.com/cudnn-archive
+
+选择合适的版本：
+```
+wget https://developer.download.nvidia.com/compute/cuda/11.2.0/local_installers/cuda_11.2.0_460.27.04_linux.run
+sudo sh cuda_11.2.0_460.27.04_linux.run
+```
+
+nvidia conda 通道现已可用：nvidia/cuda 和 nvcc 已在其中：
+`
+conda install cuda -c nvidia
+
+conda install pytorch torchvision cudatoolkit=10.2 -c pytorch -c hcc
+
+`
+
+
 
 ## 1. 指定conda源进行安装cudatoolkit和cudnn及相关库
 
 `
 conda install cudatoolkit=10.1 cudnn=7.6.3 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/linux-64/ -y
 `
+
+**[注]**
+
+- 使用 conda install 安装的 cudatoolkit 与NVIDIA打包的CUDA工具包不一样。它是一个子集，为 conda 安装的其他软件包（例如 pytorch ）提供所需的组件。如果您只需要使用 pytorch，那么这可能就是您所需要的。随 pytorch 安装的 cudatoolkit 仅是运行时，不附带开发编译器 nvcc 。要获得 nvcc ，您需要安装 cudatoolkit-dev
+- 不写版本会自动选版本与cuda版本相匹配：
+conda install cudnn
 
 ## 2. 指定pip源进行安装相关库
 `

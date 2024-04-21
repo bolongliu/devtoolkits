@@ -16,3 +16,15 @@ grep -v grep： 过滤掉包含grep的进程
 cut -c 9-16： 截取每一行进程信息的第9-16个字节，即PID号
 
 xargs kill -9：输入kill -9的作为参数，将这些进程杀死
+
+## 2.通过命令行查看项目结构
+
+```shell
+(base) ➜  pycharm git:(dev) ✗ tree -L 1 -d .
+.
+├── ARUCF
+├── datasets
+├── RP1_code
+├── RP2_code_workshop
+├── RP9_code
+```

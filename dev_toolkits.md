@@ -222,3 +222,64 @@ git add .
 git commit -m "Use git lfs for large file size of 100MB"
 git push origin master
 ```
+
+
+### 1.4 代码仓库管理
+
+1. 提交经过测试好的dev分支到github
+
+```shell
+git add .
+git commit -m "ARUCFv2.1.0.20320619.dev"
+git tag v2.1.0 dev
+git push origin dev
+```
+
+2. 合并经过测试好的dev分支到master分支上面 
+
+```shell
+git checkout master
+git merge dev
+git add .
+git tag v2.1.0
+git commit -m "ARUCFv2.1.0.20320619"
+git push -f
+git push --tags
+```
+
+**版本更新checklist**
+
+1. 在dev分支上测试代码，完全没问题后再等一天后提交到git暂存区
+2. 将dev分支的代码合并到master分支上
+3. 修改代码中头文件中的版本号:Version: v2.0.x
+4. 切换过到master分支，打上发布标签 git tag v2.0.x
+5. 提交master分支
+6. 将master分支推送到远程仓库
+
+**常用指令**
+
+| num  | git comand                              | Description                        |
+| :--: | :-------------------------------------- | :--------------------------------- |
+|  1   | git checkout dev                        | 切换为dev分支                      |
+|  2   | git checkout master                     | 切换为master分支                   |
+|  2   | git merge dev                           | 将dev分支合并到master分支上        |
+|  3   | git tag v2.0.x                          | 将当前分支打上v2.0.x的tag          |
+|  4   | git push                                | 将本地仓库推送到远程仓库           |
+|  5   | git push --tags                         | 将本地所有tag推送到远程            |
+|  6   | git tag -d v2.0.x                       | 删除本地v2.0.x tag                 |
+|  7   | git push origin :refs/tags/v2.0.x       | 删除远程标签v2.0.x                 |
+|  8   | git branch -d dev                       | 删除分支 dev                       |
+|  9   | git branch                              | 查看本地所有分支                   |
+|  10  | git status                              | 查看当前状态                       |
+|  11  | git merge <branch>                      | 合并指定分支到当前分支，保留两个   |
+|  12  | git rebase <branch>                     | 合并指定分支到当前分支，只保留一个 |
+|  13  | git rm --cached <file>                  | 停止跟踪文件，不会从磁盘中删除     |
+|  14  | git rm -r <directory>                   | 递归删除指定目录下的文件           |
+|  15  | git rm <file>                           | 删除文件（将从磁盘中删除文件）     |
+|  16  | git branch --no-merged                  | 查看所有分支未合并到当前分支的分支 |
+|  17  | git checkout -b dev                     | 从当前分支拉copy开发分支           |
+|  18  | git push origin dev                     | 把新建的dev分支push到远端          |
+|  19  | git branch --set-upstream-to=origin/dev | 关联远程dev分支                    |
+
+
+

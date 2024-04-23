@@ -4,6 +4,7 @@
 ```bash
 # 环境配置
 !conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=11.0
+!pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 !pip install ftfy regex tqdm
 !pip install git+https://github.com/openai/CLIP.git
 # 切换目录并安装

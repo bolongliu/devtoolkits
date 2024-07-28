@@ -206,3 +206,16 @@ model = model.eval()
 response, history = model.chat(tokenizer, "你好", history=[])
 print(response)
 ```
+
+## 5. 原始jupyter notebook安装，不要jupyter lab
+```shell
+conda install -c conda-forge notebook
+conda install -c conda-forge jupyter_contrib_nbextensions
+jupyter contrib nbextension install --user
+```
+Then, jupyter contrib nbextension install --user executes without error.
+Now you can enable jupyter extensions (e.g. black) like this:
+```shell
+jupyter nbextensions_configurator enable --user
+```
+

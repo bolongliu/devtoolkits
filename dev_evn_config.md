@@ -219,3 +219,23 @@ Now you can enable jupyter extensions (e.g. black) like this:
 jupyter nbextensions_configurator enable --user
 ```
 
+
+## 6. 本地浏览器打开远程服务器上的Jupyter Notebook
+```bash
+# 远程服务器配置：
+jupyter notebook --generate -config
+jupyter notebook password # 按提示，输入密码
+
+vim ~/.jupyter/jupyter_notebook_config.py 
+添加
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8888 #随便指定一个端口
+
+jupyter notebook --no-browser --port=8889
+# 本地服务器访问远程服务器
+ssh -N -f -L localhost:8882:localhost:8889 a100
+# ssh -N -f -L localhost:8889:localhost:8848 a100
+# 其中： -N 告诉SSH没有命令要被远程执行； -f 告诉SSH在后台执行； -L 是指定port forwarding的配置，远端端口是8848，本地的端口号的8888。remote_user@remote_host 用实际的远程帐户和远程地址替换
+# 然后打开浏览器，输入地址：http://localhost:8888/，再输入密码，即可登陆
+
+```

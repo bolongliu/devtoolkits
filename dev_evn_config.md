@@ -239,3 +239,9 @@ ssh -N -f -L localhost:8882:localhost:8889 a100
 # 然后打开浏览器，输入地址：http://localhost:8888/，再输入密码，即可登陆
 
 ```
+
+## 7.conda常用操作
+```shell
+# 复制指定环境并重命名
+conda create --name RP1bp --clone RP1
+```

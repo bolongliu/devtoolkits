@@ -1,3 +1,13 @@
+# 统一ML-Workspace
+All-in-one web-based IDE specialized for machine learning and data science.
+https://github.com/ml-tooling/ml-workspace
+Features
+Jupyter • Desktop GUI • VS Code • JupyterLab • Git Integration • File Sharing • Access Ports • Tensorboard • Extensibility • Hardware Monitoring • SSH Access • Remote Development • Job Execution
+![image](https://github.com/user-attachments/assets/46cb7f14-8396-42db-bec4-1ed90379563d)
+![image](https://github.com/user-attachments/assets/1acaeba4-a51e-4360-af98-2144c41f6efb)
+
+
+
 # 环境配置加速方法
 
 ## 0. conda镜像,pypi镜像,Docker镜像配置
@@ -244,4 +254,44 @@ ssh -N -f -L localhost:8882:localhost:8889 a100
 ```shell
 # 复制指定环境并重命名
 conda create --name RP1bp --clone RP1
+```
+## 8.jupyterlab好用插件
+参考连接：https://github.com/mauhai/awesome-jupyterlab
+```text
+jupyterlab-kite #免费的 AI 赋能代码补全服务 Kite
+jupyterlab-variableInspector 该插件可以在Lab中展示代码中的变量及其属性，类似RStudio中的变量检查器。你可以一边撸代码，一边看有哪些变量。
+gather 在Lab中清理代码，恢复丢失的代码以及比较代码版本的工具。
+go to Definition 该插件用于在Lab笔记本和文件编辑器中跳转到变量或函数的定义。https://github.com/krassowski/jupyterlab-go-to-definition
+lsp 该插件用于自动补全、参数建议、函数文档查询、跳转定义等。https://github.com/krassowski/jupyterlab-lsp
+jupyter-matplotlib帮助我们在notebook界面配合matplotlib实现交互式的作图，只需要在绘图之前执行魔法命令%matplotlib widget，之后绘制的所有matplotlib图表即可自动转换为交互式的：
+jupyterlab-system-monitor  #在 Jupyter Lab UI 的顶部栏显示 CPU 和内存使用情况
+jupyterlab-spreadshee # 在 Jupyter Lab 中嵌入了 xls/xlsx 电子表格查看功能
+1. JupyterLab-TOC #notebook 有一个目录
+2.  jupyterlab-drawio # 绘制图表的工具
+jupyterlab-latex 支持在线编辑并预览LaTeX文档。
+```
+```shell
+pip install ipympl
+jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-matplotlib
+jupyter labextension install jupyterlab-drawio
+jupyter labextension install jupyterlab-execute-time
+jupyter labextension install jupyterlab-spreadsheet
+pip install nbresuse
+jupyter labextension install jupyterlab-topbar-extension jupyterlab-system-monitor
+
+pip install jupyter-kite
+jupyter labextension install @kiteco/jupyterlab-kite
+
+jupyter labextension install @lckr/jupyterlab_variableinspector
+pip install aquirdturtle_collapsible_headings
+
+
+
+pip install jupyterlab-code-formatter
+pip install black isort
+pip install jupyterlab_tensorboard
+# theme 
+jupyter labextension install @telamonian/theme-darcula
+jupyter labextension install @rahlir/theme-gruvbox
+jupyter labextension install @oriolmirosa/jupyterlab_materialdarker
 ```

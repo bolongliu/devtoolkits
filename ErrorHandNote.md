@@ -118,3 +118,42 @@ Processing triggers for desktop-file-utils (0.24-1ubuntu3) ...
 Processing triggers for mime-support (3.64ubuntu1) ...
 (base) ➜  Downloads 
 ```
+### 安装的jupyterlab 死活无法打开，打开都是jupyter notebook的解决方法。
+```bash
+卸载jupyter notebook
+pip uninstall -y notebook jupyter-console jupyter-client jupyter-packaging nbconvert nbformat
+
+清理并重建 Jupyter 配置（如果有必要）
+有时，Jupyter 可能仍然会加载旧的配置或扩展，导致问题。你可以尝试清理配置并重建它：
+jupyter nbextension disable --all
+jupyter serverextension disable --all
+jupyter lab clean
+
+安装jupyterlab
+pip install jupyterlab
+(RP2bp) ➜  RPS-Code jupyter lab --version
+4.3.4
+
+jupyter --version
+
+Selected Jupyter core packages...
+IPython          : 8.24.0
+ipykernel        : 6.29.3
+ipywidgets       : 8.1.3
+jupyter_client   : 7.4.9
+jupyter_core     : 5.7.2
+jupyter_server   : 2.14.2
+jupyterlab       : 4.3.4
+nbclient         : 0.10.2
+nbconvert        : 7.16.4
+nbformat         : 5.10.4
+notebook         : 7.3.1
+qtconsole        : not installed
+traitlets        : 5.14.3
+
+确保 Jupyter Lab 启动为默认应用，如果你之前尝试过 Jupyter Notebook 并且它仍然是默认启动程序，可以执行以下命令来确认启动时是启动 Jupyter Lab：
+jupyter serverextension enable --py jupyterlab
+# 重要的是这句，将notebook直接升级到最新版本。
+pip install --upgrade notebook
+pip install --upgrade jupyterlab
+```

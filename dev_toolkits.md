@@ -66,6 +66,12 @@ git push origin v1.0.1 #将本地v1.0的tag推送到远端服务器
 git push --tags
 git push origin --tags
 
+# 打错tag并推送后修改
+删除远程标签
+git push origin --delete v1.1
+删除本地标签
+git tag -d v1.1
+
 # 分支管理
 git checkout -b dev #创建dev分支，然后切换到dev分支
 git branch #查看当前分支,星号(*)表示当前所在分支

@@ -1,4 +1,39 @@
 # dev toolkits
+# ssh 免密配置
+## 服务器端
+```shell
+PasswordAuthentication no #禁用密码登录
+PubkeyAuthentication yes #使用密钥登录
+AuthorizedKeysFile .ssh/authorized_keys #授权公钥
+PermitRootLogin no #禁止root登录
+```
+
+## 本地
+```shell
+生成本地密钥
+ssh-keygen -t rsa
+ls ~/.ssh
+id_rsa id_rsa.pub
+
+配置服务器别名登录
+vim ~/.ssh/config
+
+host myoracle_server 
+    HostName 207.211.145.255 
+    Port 22
+    User ubuntu 
+    IdentityFile ~/.ssh/oracle_vps.key # 指定密钥文件【注】该文件是服务器密钥的`私钥`
+```
+
+## 免密登录服务器
+```shell
+方法1：将公钥放入服务器`authorized_keys`中。
+
+方法2：将服务`私钥`放到本地使用 `ssh -i server.key ubuntu@ip`登录。
+
+使用：`ssh myoracle_server`即可登录服务器
+```
+
 # git分支命名规范与工作流程
 ## 快速预览
 

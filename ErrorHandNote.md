@@ -157,3 +157,18 @@ jupyter serverextension enable --py jupyterlab
 pip install --upgrade notebook
 pip install --upgrade jupyterlab
 ```
+
+
+## ubuntu@192.168.1.108: Permission denied (publickey).
+
+其主要原因是在`/etc/ssh/sshd_config`中配置了`PermitRootLogin prohibit-password`
+【解决方法】
+```shell
+sudo vim /etc/ssh/sshd_config
+
+PasswordAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+PermitRootLogin no
+```
+PermitRootLogin prohibit-password 表示允许 root 账户登录，但是不能以密码的方式登录，所以只能以公私钥的方式登录，为了简便，我们不采用这种方式，而是采用 PermitRootLogin yes，这样，直接使用密码就可以登录了。

@@ -95,7 +95,6 @@
 
 ## 其他
 1. Bitwarden - 强大的开源密码管理器
-
 2. Input-leap - 开源的跨平台KVM切换软件，共享鼠标好键盘
 
 
@@ -142,6 +141,10 @@ killall Dock
 4. **Ubuntu24.04 修改源应该使用`https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/`否则会报错，无法安装。**
 
 # Mac软件资源网站
+1. [awesome-mac](https://wangchujiang.com/awesome-mac/README-zh.html)
+
+
+
 
 ![Image](https://mmbiz.qpic.cn/mmbiz_jpg/PfPawcmRR1wWf0n22myAYPZeicfEXYV2s6vmOhQ01G2QKyFnlWib7E06l6IdSrSpleX0lHaiag8Qzy2rAriblEpTgg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 

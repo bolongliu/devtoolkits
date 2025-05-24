@@ -1,0 +1,40 @@
+# mac开发环境配置
+
+
+
+# 虚拟机配置 
+
+## [最新] Mac + VMware 安装 Ubuntu 虚拟机，100%成功、保姆级教程！Intel/M芯片 + sever版/桌面版
+
+1. 软件/镜像下载
+VMware-Fusion-13.6.2: https://pan.quark.cn/s/0e6f0cbc8e44
+VMware-Fusion-13.6.1: https://pan.quark.cn/s/dd6e1a82a561
+VMware-Fusion-13.6.0: https://pan.quark.cn/s/418ff918c58a
+VMware-Fusion-13.5.2: https://pan.quark.cn/s/39bb114e3214
+
+VMware：https://blogs.vmware.com/teamfusion/2...
+Ubuntu：https://ubuntu.com/download/server
+
+2. Ubuntu命令：
+查看内核信息：uname -a
+安装网络工具包：apt install net-tools
+查看IP：ifconfig
+ssh命令：ssh 用户名@IP地址
+
+3. 安装桌面
+apt更换清华源：
+sudo sed -i "s@http://.*archive.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g" /etc/apt/sources.list
+sudo sed -i "s@http://.*security.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g" /etc/apt/sources.list
+
+执行更新
+sudo apt update
+sudo apt upgrade
+
+报错：dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.
+执行：dpkg --configure -a 
+然后重新执行：sudo apt upgrade
+
+安装Ubuntu desktop：sudo apt install ubuntu-desktop
+启用图形界面：sudo systemctl set-default graphical.target
+重启系统：sudo reboot
+

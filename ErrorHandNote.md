@@ -172,3 +172,36 @@ AuthorizedKeysFile .ssh/authorized_keys
 PermitRootLogin no
 ```
 PermitRootLogin prohibit-password 表示允许 root 账户登录，但是不能以密码的方式登录，所以只能以公私钥的方式登录，为了简便，我们不采用这种方式，而是采用 PermitRootLogin yes，这样，直接使用密码就可以登录了。
+
+## pip install xxx 出现编译报错时，选择官方预编译的版本
+```bash
+Using cached https://pypi.tuna.tsinghua.edu.cn/packages/8e/37/efad0257dc6e593a18957422533ff0f87ede7c9c6ea010a2177d738fb82f/pure_eval-0.2.3-py3-none-any.whl (11 kB)
+Building wheels for collected packages: faiss-cpu
+  Building wheel for faiss-cpu (pyproject.toml) ... error
+  error: subprocess-exited-with-error
+  
+  × Building wheel for faiss-cpu (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [10 lines of output]
+      running bdist_wheel
+      running build
+      running build_py
+      running build_ext
+      building 'faiss._swigfaiss' extension
+      swigging faiss/faiss/python/swigfaiss.i to faiss/faiss/python/swigfaiss_wrap.cpp
+      swig -python -c++ -Doverride= -doxygen -Ifaiss -I/tmp/pip-build-env-n6fve72y/overlay/lib/python3.10/site-packages/numpy/_core/include -Ifaiss -I/usr/local/include -DSWIGWORDSIZE64 -o faiss/faiss/python/swigfaiss_wrap.cpp faiss/faiss/python/swigfaiss.i
+      swig error : Unrecognized option -doxygen
+      Use 'swig -help' for available options.
+      error: command '/usr/bin/swig' failed with exit code 1
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for faiss-cpu
+Failed to build faiss-cpu
+ERROR: Failed to build installable wheels for some pyproject.toml based projects (faiss-cpu)
+```
+使用预编译的 FAISS 包
+安装官方预编译的 FAISS（避免本地编译）
+```bash
+pip install faiss-cpu --prefer-binary  # 强制使用二进制包
+```

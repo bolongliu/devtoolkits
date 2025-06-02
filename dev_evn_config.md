@@ -218,6 +218,18 @@ print(response)
 ```
 
 ## 5. 原始jupyter notebook安装，不要jupyter lab
+
+# 1. 完全卸载 JupyterLab 及其相关包
+pip uninstall -y jupyterlab jupyterlab_server jupyterlab_widgets
+
+# 2. 删除残留的配置文件和数据
+rm -rf ~/.jupyter/lab
+rm -rf ~/.local/share/jupyter/lab
+rm -rf ~/.cache/jupyter/lab
+
+# 3. 验证是否已卸载（应显示"找不到命令"）
+which jupyter-lab
+
 ```shell
 conda install -c conda-forge notebook
 conda install -c conda-forge jupyter_contrib_nbextensions

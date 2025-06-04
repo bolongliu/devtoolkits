@@ -20,6 +20,7 @@ Ubuntu：https://ubuntu.com/download/server
 安装网络工具包：apt install net-tools
 查看IP：ifconfig
 ssh命令：ssh 用户名@IP地址
+查看系统版本：lsb-release -a
 
 3. 安装桌面
 apt更换清华源：
@@ -38,3 +39,22 @@ sudo apt upgrade
 启用图形界面：sudo systemctl set-default graphical.target
 重启系统：sudo reboot
 
+4.基本配置
+关闭 sudo 密码
+为了避免每次使用 sudo 命令时都输入密码，我们可以将密码关闭。操作方法：
+
+终端输入命令sudo visudo，打开 visudo；
+找到 %sudo ALL=(ALL:ALL) ALL 这一行修改为%sudo ALL=(ALL:ALL) NOPASSWD:ALL
+sudo vim /etc/sudoers
+%sudo ALL=(ALL:ALL) NOPASSWD:ALL
+
+修改镜像源为 ubuntu arm 源：
+编辑源文件，将 mirrors.aliyun.com/ubuntu 替换为 ARM 专用地址：
+```bash
+sudo sed -i 's|mirrors.aliyun.com/ubuntu|mirrors.aliyun.com/ubuntu-ports|g' /etc/apt/sources.list
+```
+💡 ARM 架构必须使用 -ports 后缀源，否则会触发 404 错误
+```bash
+sudo apt clean  # 清除错误缓存
+sudo apt update
+```

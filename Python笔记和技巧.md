@@ -2,6 +2,16 @@
 
 ## python 路径导入问题解决方法
 
+0. 终极解决方案（简单直接版）在 运行的文件，如md_loader.py 开头添加：
+```python
+import os
+import sys
+
+# 简单直接：将项目根目录添加到模块搜索路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+```
+
+
 1. 方法1:通过sys.path将上级，上上级目录添加到路径中。
 ```python
 # 在任何入口文件开头添加以下代码

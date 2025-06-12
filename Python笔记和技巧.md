@@ -86,4 +86,40 @@ test_import_sample.py中导入如下命令
 from test_import_helper import setup_test_environment
 setup_test_environment()
 ```
+# 2. python专业项目结构示例
+```shell
+my_project/
+├── pyproject.toml          # 项目配置
+├── setup.cfg               # 包配置
+├── src/                    # 源代码目录
+│   └── my_package/         # Python 包
+│       ├── __init__.py     # 使用绝对导入定义公开接口
+│       ├── core/           # 核心模块
+│       │   ├── __init__.py
+│       │   ├── database.py
+│       │   └── models.py   # 内部使用相对导入
+│       ├── utils/          # 工具模块
+│       │   ├── __init__.py
+│       │   ├── logger.py
+│       │   └── validators.py
+│       └── api/            # API模块
+│           ├── __init__.py
+│           └── routes.py
+├── tests/                  # 测试目录
+│   ├── __init__.py
+│   ├── test_database.py    # 使用绝对导入
+│   └── test_routes.py
+└── scripts/                # 脚本目录
+    ├── deploy.py           # 使用绝对导入
+    └── migrate_db.py
+```
+
+对于稳定可靠的项目：
+
+​​优先使用绝对导入​​
+​​将项目安装为包​​ (pip install -e .)
+​​通过 init.py 明确定义公共API​​
+​​测试代码统一使用绝对导入​​
+​​包内部可使用显式相对导入，但通过公共接口暴露更好​​
+这种混合策略结合了两种导入方式的优点，提供了清晰、稳定且易于维护的代码结构，适用于从初创项目到大型企业应用的各类场景。
 

@@ -123,3 +123,71 @@ my_project/
 ​​包内部可使用显式相对导入，但通过公共接口暴露更好​​
 这种混合策略结合了两种导入方式的优点，提供了清晰、稳定且易于维护的代码结构，适用于从初创项目到大型企业应用的各类场景。
 
+## 3. python使用单元测试
+这个脚本是使用 Python 标准库中的 unittest 框架实现的一个​​统一测试运行器​​，其主要功能是发现并执行项目中所有的测试用例。
+```text
+主要优势
+1. ​​统一入口点 (Single Entry Point)​​
+​​自动化测试发现​​：自动找到所有测试，无需手动管理测试列表
+​​标准化运行方式​​：只需运行一个脚本即可执行全部测试
+​​集中控制​​：可在单个点配置测试参数（如详细度、过滤等）
+2. ​​平台无关性​​
+基于 Python 标准库实现，不需要额外依赖
+在任何支持 Python 的环境中都能运行
+没有操作系统特异性命令，Windows/Linux/macOS 均可使用
+3. ​​集成友好​​
+​​CI/CD 友好​​：清晰的退出代码 (0/1) 让 CI 系统简单判断成败
+​​日志输出规范​​：结构化的执行输出易于集成报告系统
+​​可扩展性​​：轻松添加前置/后置操作
+4. ​​维护性与可靠性​​
+​​避免重复代码​​：共用统一的测试运行逻辑
+​​错误隔离​​：捕获全局异常，避免错误导致脚本中断
+​​健壮性​​：自动处理测试执行错误，继续运行其它测试
+```
+
+
+```python
+#!/usr/bin/env python3
+"""运行所有测试的统一入口"""
+import unittest
+import os
+
+def run_all_tests():
+    """发现并运行所有测试"""
+    test_dir = os.path.join(os.path.dirname(__file__), 'tests')
+    loader = unittest.TestLoader()
+    suite = loader.discover(test_dir, pattern='test_*.py')
+    
+    print("=" * 50)
+    print(f" 开始运行所有测试 (来自: {test_dir})")
+    print("=" * 50)
+    
+    runner = unittest.TextTestRunner(verbosity=2)
+    result = runner.run(suite)
+    
+    print("=" * 50)
+    print(f" 测试结果: {'成功' if result.wasSuccessful() else '失败'}")
+    print("=" * 50)
+    
+    return result.wasSuccessful()
+
+if __name__ == '__main__':
+    import sys
+    success = run_all_tests()
+    sys.exit(0 if success else 1)
+```
+
+**最佳实践建议**
+
+组织测试结构​​：
+```shell
+​​
+project/
+├── src/
+├── tests/
+│   ├── test_unit/
+│   ├── test_integration/
+│   ├── test_system/
+│   └── test_performance/
+├── run_tests.py
+```

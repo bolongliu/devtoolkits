@@ -10,13 +10,14 @@ import sys
 # 简单直接：将项目根目录添加到模块搜索路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# 或者这样
 import os
 import sys
 
-# current_dir = os.path.dirname(os.path.abspath(__file__))
-# parent_dir = os.path.dirname(os.path.dirname(current_dir))
-# sys.path.append(current_dir)
-# sys.path.append(parent_dir)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(os.path.dirname(current_dir))
+ys.path.append(current_dir)
+sys.path.append(parent_dir)
 ```
 
 

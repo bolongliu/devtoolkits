@@ -273,3 +273,14 @@ collected 23 items
 tests/test_import_simple.py F.                                                                  [  8%]
 tests/test_md_loader.py 
 ```
+
+## 3. python进度条设置
+
+```python
+files = ["file1.txt", "file2.txt", "file3.txt"]
+
+with tqdm(total=len(files), desc="Processing files") as pbar:
+    for file in files:
+        process_file(file)  # 处理文件
+        pbar.update(1)  # 每处理完一个文件，进度增加1
+```

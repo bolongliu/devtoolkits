@@ -18,6 +18,8 @@ Environment="OLLAMA_MAX_LOADED_MODELS=20"
 Environment="OLLAMA_SCHED_SPREAD=true"
 # 启用 Flash Attention（默认false，示例值：1）
 Environment="OLLAMA_FLASH_ATTENTION=1"
+# ollama 指定GPU运行
+Environment="CUDA_VISIBLE_DEVICES=2"
 ============================================
 User=ollama
 Group=ollama

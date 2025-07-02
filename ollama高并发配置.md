@@ -18,6 +18,9 @@ Environment="OLLAMA_MAX_LOADED_MODELS=20"
 Environment="OLLAMA_SCHED_SPREAD=true"
 # 启用 Flash Attention（默认false，示例值：1）
 Environment="OLLAMA_FLASH_ATTENTION=1"
+要使用所有4块GPU (假设索引为0, 1, 2, 3)：
+Environment="CUDA_VISIBLE_DEVICES=0,1,2,3"
+
 # ollama 指定GPU运行
 Environment="CUDA_VISIBLE_DEVICES=2"
 ============================================
@@ -30,6 +33,12 @@ Environment="PATH=/home/liubl/miniconda3/envs/RP8/bin:/home/liubl/miniconda3/con
 [Install]
 WantedBy=default.target
 ```
+同时，请确保其他两个配置是合理的：
+
+OLLAMA_MAX_LOADED_MODELS=5：这个值应该大于或等于您希望同时使用的GPU数量。例如，如果您想在4块GPU上各跑一个模型，这个值至少应该是4。您设置为5是完全没问题的。
+
+OLLAMA_SCHED_SPREAD=true：这个设置非常重要！ 它告诉Ollama将不同的模型**分散（spread）**到不同的GPU上，而不是把所有模型都堆积到第一块可用的GPU上。您已经正确地配置了它。
+
 
 保存并退出后，重新加载 systemd 配置：
 ```shell
